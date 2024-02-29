@@ -22,6 +22,7 @@ in vec2 TexCoords;
 
 uniform float iTime;
 uniform sampler2D sceneTexture;
+uniform float amount;
 
 float noise(float x)
 {
@@ -46,6 +47,7 @@ void main()
     dst_offset *= 0.01;
 
     dst_offset *= (1.0 - p_m.t);
+    dst_offset *= amount;
 
     vec2 dist_tex_coord = p_m.st + dst_offset;
     

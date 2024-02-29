@@ -27,8 +27,8 @@ Position : { -42.4 , 44.7 , -67.6 }
 Rotation : { -25.9 , 273.8 , 0.0 }
 
 #Camera
-Position : { 44 , 30 , -23 }
-Rotation : { -40, 86 , 0.0 }
+Position : { 45.1 , 25.3 , -35.3 }
+Rotation : { -25.2, 180 , 0.0 }
 
 //Table Light
 #Light 

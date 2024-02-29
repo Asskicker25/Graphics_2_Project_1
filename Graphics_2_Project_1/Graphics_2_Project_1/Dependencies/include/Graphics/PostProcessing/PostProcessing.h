@@ -6,6 +6,7 @@
 #include "Bloom.h"
 #include "ChromaticAberration.h"
 #include "HeatDistortion.h"
+#include "NightVision.h"
 
 namespace PostProcessing_v1
 {
@@ -30,6 +31,7 @@ namespace PostProcessing_v1
 		Bloom bloom;
 		ChromaticAberration chromaticAberration;
 		HeatDistortion heatDistortion;
+		NightVision nightVision;
 
 	private:
 
