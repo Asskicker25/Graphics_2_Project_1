@@ -1,6 +1,6 @@
 #Camera
-Position : { -15 , 60 , -90 }
-Rotation : { -10 , 90 , 0.0 }
+Position : { -37.5 , 41.8 , -98.4 }
+Rotation : { -0.4 , 180 , 0.0 }
 
 #Camera
 Position : { -82 , 38 , -19 }
@@ -282,60 +282,6 @@ Model Id : { Eggs }
 Position : { -17, 31.2 , 5.2 }
 Rotation : { 00 , 0.0 , 0.0 }
 Scale : { 1 , 1 ,1 }
-Shader : { Default }
-
-#Model
-Model path : { Assets/Models/FallEggs/Jar.fbx }
-Model Id : { Jar }
-Position : { -47.9, 38.9 , -82.69 }
-Rotation : { 0 , 0.0 , 0.0 }
-Scale : { 1 , 1 ,1 }
-Shader : { AlphaBlend }
-MaterialCol : [0] { 1.0 , 1.0, 1.0, 1.0 }
-MaterialCol : [1] { 1.0  , 1.0 ,1.0 , 0.9 }
-
-#Model
-Model path : { Assets/Models/FallEggs/Jar.fbx }
-Model Id : { Jar }
-Position : { -40.9, 38.9 , -82.69 }
-Rotation : { 0 , 0.0 , 0.0 }
-Scale : { 1 , 1 ,1 }
-Shader : { AlphaBlend }
-MaterialCol : [0] { 1.0 , 1.0, 1.0, 1.0 }
-MaterialCol : [1] { 1.0 , 1.0 , 1.0 , 0.6 }
-
-#Model
-Model path : { Assets/Models/FallEggs/Jar.fbx }
-Model Id : { Jar }
-Position : { -33.9, 38.9 , -82.69 }
-Rotation : { 0 , 0.0 , 0.0 }
-Scale : { 1 , 1 ,1 }
-Shader : { AlphaBlend }
-MaterialCol : [0] { 1.0 , 1.0, 1.0, 1.0 }
-MaterialCol : [1] { 1.0 , 1.0 , 1.0 , 0.25 }
-
-#Model
-Model path : { Assets/Models/FallEggs/Eyes.fbx }
-Model Id : { Eyes }
-Position : { -47.9, 35.1 ,-82.6 }
-Rotation : { -90 , 0.0 , 0.0 }
-Scale : { 100 , 100 , 100 }
-Shader : { Default }
-
-#Model
-Model path : { Assets/Models/FallEggs/Eyes.fbx }
-Model Id : { Eyes }
-Position : { -40.9, 35.1 ,-82.6 }
-Rotation : { -90 , 0.0 , 0.0 }
-Scale : { 100 , 100 , 100 }
-Shader : { Default }
-
-#Model
-Model path : { Assets/Models/FallEggs/Eyes.fbx }
-Model Id : { Eyes }
-Position : { -33.9, 35.1 ,-82.6 }
-Rotation : { -90 , 0.0 , 0.0 }
-Scale : { 100 , 100 , 100 }
 Shader : { Default }
 
 #Model

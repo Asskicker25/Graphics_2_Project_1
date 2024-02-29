@@ -2,6 +2,8 @@
 
 #include <Graphics/Scene/BaseScene.h>
 #include <Graphics/GameCamera.h>
+#include "../Camera/CameraController.h"
+
 
 using namespace Scene;
 
@@ -19,7 +21,14 @@ public:
 	void Render() override;
 	
 private:
+
+	void SetUpSecurityCamera();
+
 	GraphicsApplication* mApplication = nullptr;
 	GameCamera* mMainCamera = nullptr;
+	CameraController* mCamController = nullptr;
+
+	Model* mMonitor = nullptr;
+
 };
 

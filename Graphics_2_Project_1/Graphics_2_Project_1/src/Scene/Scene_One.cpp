@@ -15,6 +15,8 @@ void Scene_One::Start()
 	mMainCamera->transform.SetRotation(mApplication->listOfCameraTransforms[0]->rotation);
 	mMainCamera->applyPostProcessing = true;
 
+	mCamController = new CameraController(mMainCamera);
+
 #pragma region Lights
 
 	for (int i = 0; i < mApplication->listOfLights.size(); i++)
@@ -85,6 +87,8 @@ void Scene_One::Start()
 #pragma endregion
 
 
+	SetUpSecurityCamera();
+
 }
 
 void Scene_One::Update()
@@ -93,4 +97,13 @@ void Scene_One::Update()
 
 void Scene_One::Render()
 {
+}
+
+void Scene_One::SetUpSecurityCamera()
+{
+	mMonitor = new Model("Assets/Models/Monitor.fbx");
+	mMonitor->name = "Monitor";
+	mMonitor->transform.SetPosition(glm::vec3(-37.9f, 34.5f, -86.5f));
+	mMonitor->transform.SetRotation(glm::vec3(-90.0f,180.0f, 0));
+	mMonitor->transform.SetScale(glm::vec3(50));
 }
