@@ -1,7 +1,7 @@
 #pragma once
 
 #include <Graphics/Scene/BaseScene.h>
-#include <Graphics/GameCamera.h>
+#include <Graphics/Camera/GameCamera.h>
 #include "../Camera/CameraController.h"
 
 

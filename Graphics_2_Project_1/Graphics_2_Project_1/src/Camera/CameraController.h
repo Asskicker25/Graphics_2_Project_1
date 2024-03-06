@@ -1,5 +1,5 @@
 #pragma once
-#include <Graphics/GameCamera.h>
+#include <Graphics/Camera/GameCamera.h>
 #include <Graphics/InputManager/InputManager.h>
 
 class CameraController : public Entity, public iInputListener

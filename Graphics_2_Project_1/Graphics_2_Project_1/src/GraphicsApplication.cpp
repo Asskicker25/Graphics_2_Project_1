@@ -57,3 +57,7 @@ void GraphicsApplication::KeyCallBack(GLFWwindow* window, int& key, int& scancod
 void GraphicsApplication::MouseButtonCallback(GLFWwindow* window, int& button, int& action, int& mods)
 {
 }
+
+void GraphicsApplication::OnPlayStateChanged(bool state)
+{
+}
