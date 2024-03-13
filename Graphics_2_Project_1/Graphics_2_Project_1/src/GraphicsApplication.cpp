@@ -4,8 +4,8 @@
 void GraphicsApplication::SetUp()
 {
 	viewportCamera->InitializeCamera(PERSPECTIVE, windowWidth, windowHeight, 0.1f, 500.0f, 65.0f);
-	viewportCamera->transform.SetPosition(listOfCameraTransforms[cameraPresetIndex]->position);
-	viewportCamera->transform.SetRotation(listOfCameraTransforms[cameraPresetIndex]->rotation);
+	viewportCamera->transform.SetPosition(glm::vec3(39.5f, 60.5f, -141.57f));
+	viewportCamera->transform.SetRotation(glm::vec3(-11.2f, 145.0f, 0));
 	viewportCamera->applyPostProcessing = true;
 
 	EditorLayout::GetInstance().SetMaximizeState(true);

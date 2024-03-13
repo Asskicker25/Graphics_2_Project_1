@@ -1,6 +1,6 @@
 #Camera
-Position : { -37.5 , 41.8 , -98.4 }
-Rotation : { -0.4 , 180 , 0.0 }
+Position : { -10.5 , 58.8 , -115.4 }
+Rotation : { -5.0, 150 , 0.0 }
 
 #Camera
 Position : { -82 , 38 , -19 }
@@ -122,6 +122,7 @@ Intensity : { 1 }
 Radius : { 10 }
 InnerOuterAngle : { 30, 40 }
 
+
 #Model
 Model path : { Assets/Models/FallEggs/WallAndRoof.fbx }
 Model Id : { WallAndFloor }
@@ -132,6 +133,14 @@ Shader : { Default }
 MaterialCol : [0] { 0.5 , 0.5, 0.5, 1.0 }
 MaterialCol : [1] { 0.53 , 0.7, 0.72, 1.0 }
 MaterialTiling : [2] { 10, 10 }
+
+#Model
+Model path : { Assets/Models/Stardestroyer_CompleteModel_LayersJoined_xyz_n_uv.ply }
+Model Id : { StarDestroyer }
+Position : { -21.11 , 34.37 , -75.23 }
+Rotation : {  0.0 , 0.0 , 0.0 }
+Scale : { 0.01 , 0.01 , 0.01 }
+Shader : { Default }
 
 #Model
 Model path : { Assets/Models/FallEggs/KitchenSlab.fbx }
@@ -148,6 +157,8 @@ Position : { -45.64 , 53.6 , 9.93 }
 Rotation : { -90.0 , 0.0 , 0.0 }
 Scale : { 100 , 100 , 100 }
 Shader : { Default }
+
+
 
 #Model
 Model path : { Assets/Models/FallEggs/Window.fbx }

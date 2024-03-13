@@ -58,29 +58,38 @@ void Scene_One::Start()
 			modelData->model->shader = Renderer::GetInstance().alphaCutOutShader;
 		}
 
-		modelData->model->LoadModel(modelData->path);
-
-		for (MaterialData* matData : modelData->materialData)
-		{
-			BaseMaterial* material = modelData->model->meshes[matData->index]->material;
-
-			if (modelData->shader == "Default" || modelData->shader == "AlphaBlend" || modelData->shader == "ColorMask" ||
-				modelData->shader == "UVAnim" || modelData->shader == "AlphaCutOut")
+		modelData->model->OnModelLoaded = [this, modelData](Model* self)
 			{
-				material->AsMaterial()->SetBaseColor(matData->color);
-				material->AsMaterial()->textureTiling = matData->tiling;
-				if (matData->diffusePath != "")
+				for (MaterialData* matData : modelData->materialData)
 				{
-					material->AsMaterial()->diffuseTexture = new Texture(matData->diffusePath);
-				}
-				if (matData->maskPath != "")
-				{
-					material->AsMaterial()->alphaMask = new Texture(matData->maskPath);
-					material->AsMaterial()->useMaskTexture = true;
-				}
-			}
-		}
+					BaseMaterial* material = modelData->model->meshes[matData->index]->material;
 
+					if (modelData->shader == "Default" || modelData->shader == "AlphaBlend" || modelData->shader == "ColorMask" ||
+						modelData->shader == "UVAnim" || modelData->shader == "AlphaCutOut")
+					{
+						material->AsMaterial()->SetBaseColor(matData->color);
+						material->AsMaterial()->textureTiling = matData->tiling;
+						if (matData->diffusePath != "")
+						{
+							material->AsMaterial()->diffuseTexture = new Texture(matData->diffusePath);
+						}
+						if (matData->maskPath != "")
+						{
+							material->AsMaterial()->alphaMask = new Texture(matData->maskPath);
+							material->AsMaterial()->useMaskTexture = true;
+						}
+					}
+				}
+			};
+
+		if (mApplication->loadAsync)
+		{
+			modelData->model->LoadModelAsync(modelData->path);
+		}
+		else
+		{
+			modelData->model->LoadModel(modelData->path);
+		}
 	
 	}
 
@@ -88,6 +97,7 @@ void Scene_One::Start()
 
 	SetUpSecurityCamera();
 	SetUpSecurityMonitor();
+
 
 }
 
@@ -142,34 +152,64 @@ void Scene_One::SetUpSecurityCamera()
 
 void Scene_One::SetUpSecurityMonitor()
 {
-	mMonitor = new Model("Assets/Models/Monitor.fbx");
-	mMonitor->name = "Monitor";
-	mMonitor->transform.SetPosition(glm::vec3(-37.9f, 34.5f, -86.5f));
-	mMonitor->transform.SetRotation(glm::vec3(-90.0f, 180.0f, 0));
-	mMonitor->transform.SetScale(glm::vec3(50));
+	mMonitor = new Model();
+	mMonitor->OnModelLoaded = [](Model* self)
+		{
+			self->name = "Monitor";
+			self->transform.SetPosition(glm::vec3(-37.9f, 34.5f, -86.5f));
+			self->transform.SetRotation(glm::vec3(-90.0f, 180.0f, 0));
+			self->transform.SetScale(glm::vec3(50));
+		};
+
+	if (mApplication->loadAsync)
+	{
+		mMonitor->LoadModelAsync("Assets/Models/Monitor.fbx");
+
+	}
+	else
+	{
+		mMonitor->LoadModelAsync("Assets/Models/Monitor.fbx");
+	}
+	
+
+	mQuad1 = new Model();
+	mQuad1->OnModelLoaded = [this](Model* self)
+		{
+			self->name = "Quad 1";
+			self->transform.SetPosition(glm::vec3(-32.5f, 44.5f, -87.8f));
+			self->transform.SetScale(glm::vec3(-4.9f, -2.65f, 2.65f));
+			self->meshes[0]->material->AsMaterial()->diffuseTexture = mSecurityCamera2->renderTexture;
+
+			mQuad2 = new Model();
+			mQuad2->CopyFromModel(*mQuad1, true);
+			mQuad2->name = "Quad 2";
+			mQuad2->transform.SetPosition(glm::vec3(-42.72f, 44.5f, -87.8f));
+			mQuad2->meshes[0]->material->AsMaterial()->diffuseTexture = mSecurityCamera1->renderTexture;
+
+			mQuad3 = new Model();
+			mQuad3->CopyFromModel(*mQuad1, true);
+			mQuad3->name = "Quad 3";
+			mQuad3->transform.SetPosition(glm::vec3(-32.5f, 38.82f, -87.8f));
+			mQuad3->meshes[0]->material->AsMaterial()->diffuseTexture = mSecurityCamera3->renderTexture;
+
+			mQuad4 = new Model();
+			mQuad4->CopyFromModel(*mQuad1, true);
+			mQuad4->name = "Quad 4";
+			mQuad4->transform.SetPosition(glm::vec3(-42.72f, 38.82f, -87.8f));
+			mQuad4->meshes[0]->material->AsMaterial()->diffuseTexture = mSecurityCamera4->renderTexture;
+		};
+
+	if (mApplication->loadAsync)
+	{
+		mQuad1->LoadModelAsync("res/Models/DefaultQuad.fbx");
+
+	}
+	else
+	{
+		mQuad1->LoadModelAsync("res/Models/DefaultQuad.fbx");
+	}
+	
 
 
-	mQuad1 = new Model("res/Models/DefaultQuad.fbx");
-	mQuad1->name = "Quad 1";
-	mQuad1->transform.SetPosition(glm::vec3(-32.5f, 44.5f, -87.8f));
-	mQuad1->transform.SetScale(glm::vec3(-4.9f, -2.65f, 2.65f));
-	mQuad1->meshes[0]->material->AsMaterial()->diffuseTexture = mSecurityCamera2->renderTexture;
-
-	mQuad2 = new Model();
-	mQuad2->CopyFromModel(*mQuad1, true);
-	mQuad2->name = "Quad 2";
-	mQuad2->transform.SetPosition(glm::vec3(-42.72f, 44.5f, -87.8f));
-	mQuad2->meshes[0]->material->AsMaterial()->diffuseTexture = mSecurityCamera1->renderTexture;
-
-	mQuad3 = new Model();
-	mQuad3->CopyFromModel(*mQuad1, true);
-	mQuad3->name = "Quad 3";
-	mQuad3->transform.SetPosition(glm::vec3(-32.5f, 38.82f, -87.8f));
-	mQuad3->meshes[0]->material->AsMaterial()->diffuseTexture = mSecurityCamera3->renderTexture;
-
-	mQuad4 = new Model();
-	mQuad4->CopyFromModel(*mQuad1, true);
-	mQuad4->name = "Quad 4";
-	mQuad4->transform.SetPosition(glm::vec3(-42.72f, 38.82f, -87.8f));
-	mQuad4->meshes[0]->material->AsMaterial()->diffuseTexture = mSecurityCamera4->renderTexture;
+	
 }

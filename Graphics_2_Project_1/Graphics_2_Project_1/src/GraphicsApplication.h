@@ -57,6 +57,7 @@ public:
 	std::vector<Transform*> listOfCameraTransforms;
 
 	int cameraPresetIndex = 0;
+	bool loadAsync = false;
 
 	// Inherited via ApplicationWindow
 	void SetUp() override;

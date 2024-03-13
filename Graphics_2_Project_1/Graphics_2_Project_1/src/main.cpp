@@ -17,6 +17,13 @@ GraphicsApplication application;
 
 int main(int argc, char* argv[])
 {
+	char input;
+
+	std::cout << "Load Models By Thread (y/n)? : ";
+	std::cin >> input;
+
+	application.loadAsync = input == 'y';
+
 	Debugger::print = true;
 	Mesh::normalScale = NORMALS_SIZE;
 	Renderer::GetInstance().gizmoIconSize = GIZMO_ICON_SIZE;
